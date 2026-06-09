@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV - Vasilisa Kashcheeva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    /* Reset and Core Styles */
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #1f2937; /* Modern charcoal grey */
+        font-size: 13px;
+        line-height: 1.6;
+        background-color: #f3f4f6; /* Off-white canvas for preview */
+        margin: 0;
+        padding: 40px 0;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Page Container sized exactly to A4 */
+    .page {
+        background: #ffffff;
+        width: 100%;
+        max-width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto;
+        padding: 20mm 18mm;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        position: relative;
+    }
+
+    /* Print optimization styles */
+    @media print {
+        body {
+            background-color: #fff;
+            padding: 0;
+        }
+        .page {
+            width: 100%;
+            min-height: initial;
+            margin: 0;
+            padding: 0;
+            box-shadow: none;
+        }
+        /* Keep page margins consistent in printer setup */
+        @page {
+            size: A4;
+            margin: 18mm 16mm;
+        }
+    }
+
+    /* Figma-style Header Layout with Color Accent */
+    .header-grid {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        border-bottom: 2px solid #4f46e5; /* Main accent color bottom border */
+        padding-bottom: 20px;
+        margin-bottom: 25px;
+    }
+    
+    .header-left {
+        flex: 1;
+        padding-right: 20px;
+    }
+    
+    .header-right {
+        flex-shrink: 0;
+    }
+    
+    h1 {
+        font-size: 32px;
+        font-weight: 700;
+        margin: 0 0 4px 0;
+        color: #111827;
+        letter-spacing: -0.75px;
+    }
+    
+    .title {
+        font-size: 16px;
+        color: #4f46e5; /* Accent color for the job title */
+        margin: 0 0 16px 0;
+        font-weight: 600;
+        letter-spacing: -0.1px;
+        text-transform: uppercase;
+    }
+    
+    /* Contact Row */
+    .contact-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        font-size: 12px;
+        color: #4b5563;
+    }
+    
+    .contact-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    .contact-item a {
+        color: #4b5563;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .contact-item a:hover {
+        color: #4f46e5;
+    }
+    
+    /* Figma-style rounded avatar container */
+    .profile-photo {
+        width: 100px;
+        height: 100px;
+        border-radius: 20px; /* Modern Figma squircle corner */
+        object-fit: cover;
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15); /* Soft accent glow shadow */
+        border: 2px solid #4f46e5; /* Accent border around photo */
+        background-color: #f3f4f6;
+    }
+
+    /* Section Component Styles */
+    h3 {
+        font-size: 14px;
+        font-weight: 700;
+        color: #4f46e5; /* Accent color for headings */
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        margin-top: 28px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 6px;
+    }
+    
+    .section-text {
+        margin-bottom: 12px;
+        color: #374151;
+        text-align: justify;
+    }
+    
+    /* Meta Component (2 Column Grid for Skills & Education) */
+    .meta-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-bottom: 10px;
+    }
+    
+    .meta-column {
+        min-width: 0;
+    }
+
+    .meta-column h3 {
+        margin-top: 15px;
+    }
+
+    /* Experience / Jobs Component */
+    .job {
+        margin-bottom: 20px;
+        page-break-inside: avoid;
+    }
+    
+    .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 6px;
+    }
+    
+    .job-title-box {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .job-date-box {
+        flex-shrink: 0;
+        text-align: right;
+        font-size: 12px;
+        color: #4f46e5; /* Accent date style */
+        font-weight: 600;
+        padding-left: 15px;
+    }
+    
+    .job-title {
+        font-weight: 700;
+        font-size: 14px;
+        color: #111827;
+    }
+    
+    .job-company {
+        font-size: 13px;
+        color: #4b5563;
+        font-weight: 500;
+        margin-top: 2px;
+    }
+    
+    ul {
+        margin-top: 6px;
+        margin-bottom: 6px;
+        padding-left: 18px;
+    }
+    
+    li {
+        margin-bottom: 5px;
+        color: #374151;
+        text-align: justify;
+    }
+    
+    strong {
+        font-weight: 600;
+        color: #111827;
+    }
+
+.download-pdf-btn{
+position:fixed;top:16px;right:16px;z-index:1000;background:#a3b1d1;color:#1f2937;border:none;border-radius:8px;padding:12px 18px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(163,177,209,.35);
+}
+@media screen and (max-width:768px){
+body{padding:12px;}
+.page{padding:16px;min-height:auto;}
+.header-grid{flex-direction:column-reverse;gap:16px;}
+.meta-grid{grid-template-columns:1fr;gap:10px;}
+.job-header{flex-direction:column;align-items:flex-start;gap:4px;}
+.job-date-box{padding-left:0;text-align:left;}
+.download-pdf-btn{position:sticky !important;top:10px;width:100%;max-width:100%;right:auto;left:auto;border-radius:10px;margin-bottom:16px;display:block;}
+}
+@media print{
+.download-pdf-btn{display:none !important;}
+.page{width:210mm !important;max-width:210mm !important;min-height:297mm !important;}
+}
+
+
+.download-pdf-btn:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(163,177,209,.45);
+}
+</style>
+
+</head>
+<body>
+<button class="download-pdf-btn" onclick="window.print()">Download PDF</button>
+
+    <div class="page">
+        <!-- FIGMA HEADER COMPONENT WITH COLOR ACCENT -->
+        <div class="header-grid">
+            <div class="header-left">
+                <h1>Vasilisa Kashcheeva</h1>
+                <div class="title">Business Development / Senior Project Manager</div>
+                <div class="contact-bar">
+                    <span class="contact-item">
+                        </strong> <a href="mailto:kashcheevavasilisa@gmail.com">kashcheevavasilisa@gmail.com</a>
+                    </span>
+                    <span class="contact-item">
+                        </strong> <a href="https://linkedin.com/in/vasilisa-kashcheeva" target="_blank">linkedin.com/in/vasilisa-kashcheeva</a>
+                    </span>
+                    <span class="contact-item">
+                        </strong> <a href="https://t.me/vasilisa_kasheeva" target="_blank">t.me/vasilisa_kasheeva</a>
+                    </span>
+                    <span class="contact-item">
+                        <strong>📍</strong> Armenia, Remote
+                    </span>
+                </div>
+            </div>
+            <div class="header-right">
+                <!-- Displays the user's photo directly -->
+                <img src="input_file_1.png" onerror="this.src='1760371127781 (1).jfif';" class="profile-photo" alt="Vasilisa Kashcheeva">
+            </div>
+        </div>
+
+        <!-- NEW OPTIMIZED SUMMARY SECTION -->
+        <h3>Professional Summary</h3>
+        <p class="section-text" style="font-size: 13.5px; line-height: 1.6; color: #1f2937;">
+            An adaptable IT leader with 10+ years of experience bridging business strategy and technical execution across AdTech, GameDev, and B2B products. Proven in scaling processes from scratch and leading cross-functional teams of up to 50+ people. I manage through "soft discipline", prioritizing proactive communication, calm under pressure, and genuine team motivation. I am looking for a Senior PM / Delivery Manager role to deeply learn your product ecosystem and eventually transition into Pre-sales or Business Development.
+        </p>
+
+        <!-- TWO COLUMN GRID FOR SKILLS & EDUCATION -->
+        <div class="meta-grid">
+            <div class="meta-column">
+                <h3>Skills & Languages</h3>
+                <p class="section-text" style="margin-bottom: 8px;">
+                    <strong>SDLC Frameworks:</strong> Agile / Scrum / Kanban / Waterfall
+                </p>
+                <p class="section-text" style="margin-bottom: 8px;">
+                    <strong>Core Skills:</strong> Backlog Management, Risk Mitigation, Stakeholder Management, Art Management, BizDev
+                </p>
+                <p class="section-text" style="margin-bottom: 0;">
+                    <strong>Languages:</strong> English (Intermediate)
+                </p>
+            </div>
+            <div class="meta-column">
+                <h3>Education</h3>
+                <p class="section-text">
+                    <strong>Udmurt State University</strong><br>
+                    Bachelor of Arts in Sociology
+                </p>
+            </div>
+        </div>
+
+        <!-- EXPERIENCE SECTION -->
+        <h3>Experience</h3>
+        
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title-box">
+                    <span class="job-title">Chief Operating Officer (COO) / Delivery Manager</span><br>
+                    <span class="job-company">GEMS | (GameDev / AdTech)</span>
+                </div>
+                <div class="job-date-box">2023 - 2026</div>
+            </div>
+            <ul>
+                <li>Built the interactive ad production process (AS IS, TO BE) utilizing WebGL/HTML5 technologies.</li>
+                <li>Led End-to-End Project Delivery (from pre-sale to GitHub release) and coordinated a team of up to 10 people and a network of external contractors.</li>
+                <li>Implemented a financial tracking system, designed business models and project unit economics, and controlled P&L and payments to contractors.</li>
+                <li>Negotiation and Client Management with foreign B2B partners.</li>
+                <li>Scaled sales and B2B Networking efforts: created successful Commercial Offers / Proposals templates, estimated project costs, and led Stakeholder Management.</li>
+                <li>Successfully led the studio with Creative Problem Solving to the finals of the Sevan Startup Summit incubator.</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title-box">
+                    <span class="job-title">Senior Project Manager</span><br>
+                    <span class="job-company">Be Nice | (GameDev / AdTech)</span>
+                </div>
+                <div class="job-date-box">2022 - 2023</div>
+            </div>
+            <ul>
+                <li>Managed digital asset production in distributed cross-functional teams (art and development).</li>
+                <li>Spearheaded Requirements Gathering, formed the backlog using Agile / Waterfall methodologies, and provided continuous feedback.</li>
+                <li>Maintained resilience and supported the team.</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title-box">
+                    <span class="job-title">Systems Analyst / IT Project Manager</span><br>
+                    <span class="job-company">Private City "Dobrograd"</span>
+                </div>
+                <div class="job-date-box">2022</div>
+            </div>
+            <ul>
+                <li>Analyzed the city's IT infrastructure to drive Process Optimization / Process Improvement and future modernization.</li>
+                <li>Managed IT vendors, developed technical tasks and concepts, and smoothly integrated new tech solutions into existing processes.</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title-box">
+                    <span class="job-title">IT Project Manager</span><br>
+                    <span class="job-company">RBC PRO (Online Business Journal)</span>
+                </div>
+                <div class="job-date-box">2021 - 2022</div>
+            </div>
+            <ul>
+                <li>Coordinated cross-department teams under strict corporate rules.</li>
+                <li>Completed segmented Performance Marketing (email) projects for different user groups.</li>
+                <li>Maintained comprehensive Software Development Life Cycle (SDLC) documentation and knowledge bases (Jira, Confluence).</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <div class="job-title-box">
+                    <span class="job-title">Project Manager</span><br>
+                    <span class="job-company">Boxglass (AR/VR Startup)</span>
+                </div>
+                <div class="job-date-box">2019 - 2021</div>
+            </div>
+            <ul>
+                <li>Spearheaded complex AR/VR projects (including exhibition stands and events) with in-house teams and contractors, focusing on End-to-End Project Management.</li>
+                <li>Bridged PM and Pre-sales Engineering roles: executed Requirements Gathering, estimated projects, and prepared tailored Commercial Offers / Proposals.</li>
+            </ul>
+        </div>
+
+        <div class="job" style="margin-bottom: 10px;">
+            <div class="job-header">
+                <div class="job-title-box">
+                    <span class="job-title">Head of Analytics Department / Business Analyst</span><br>
+                    <span class="job-company">Picom (Web and App Development)</span>
+                </div>
+                <div class="job-date-box">2015 - 2021</div>
+            </div>
+            <ul>
+                <li>Scaled the analytics department from scratch (managed a team of 4) and introduced new types of product, UX, and CX research, leveraging Out-of-the-box thinking.</li>
+                <li>Supported the team: actively developed group interactions and team-building. Took part in conferences as a speaker.</li>
+                <li>As an Systems Analyst: Streamlined business processes, executed Requirements Gathering, and developed prototypes and technical tasks.</li>
+            </ul>
+        </div>
+
+        <!-- PUBLIC SPEAKING SECTION -->
+        <h3>Public Speaking & Event Projects</h3>
+        <ul>
+            <li><strong>Event Management:</strong> Experience in organizing large offline events and concerts for up to 1,000 attendees.</li>
+            <li><strong>Public Speaking:</strong> Invited speaker at various IT conferences (both offline and online).</li>
+            <li><strong>Content Creation:</strong> Author of a LinkedIn blog focused on marketing, mobile games, and studio management, where I regularly post market analysis and industry trends.</li>
+        </ul>
+    </div>
+
+</body>
+</html>
